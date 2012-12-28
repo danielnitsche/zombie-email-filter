@@ -1,5 +1,5 @@
-Inhuman filter
-==============
+Inhuman email filter
+====================
 
 Having your email client notify you about email messages that you don't really care about can be infuriating. Coming up with a rule on which messages you care about can be tricky, but the best definition I've found for this rule is "only show me stuff sent (manually) by a real human". Previously, I'd set up filters for every service I'd ever subscribed to, and I'd send my emails to separate folders for each of these services. That quickly becomes a real pain to maintain, and it doesn't reduce my email stress because now I have to go through dozens of folders of unread emails. The inhuman filter is my simple attempt at solving this.
 
