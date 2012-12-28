@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+	<title>Mail Filters</title>
+	<author>
+		<name>Daniel Nitsche</name>
+	</author>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<content></content>
+		<apps:property name='hasTheWord' value='(from:(reply) OR from:(no-reply) OR from:(noreply) OR from:(do_not_reply) OR from:(MAILER-DAEMON) OR subject:(order -re) OR subject:(invoice -re) OR subject:(receipt -re) OR (&quot;unsubscribe&quot;) OR (&quot;do not reply&quot;) OR (&quot;add our e-mail&quot;) OR (&quot;add our email&quot;)) OR (&quot;your receipt number&quot;)'/>
+		<apps:property name='label' value='InHuman'/>
+		<apps:property name='shouldArchive' value='true'/>
+	</entry>
+</feed>
