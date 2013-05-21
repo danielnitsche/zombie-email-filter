@@ -7,8 +7,39 @@
 		<category term='filter'></category>
 		<title>Mail Filter</title>
 		<content></content>
-		<apps:property name='hasTheWord' value='(from:(reply) OR from:(no-reply) OR from:(noreply) OR from:(do_not_reply) OR from:(MAILER-DAEMON) OR subject:(order -re) OR subject:(invoice -re) OR subject:(receipt -re) OR (&quot;unsubscribe&quot;) OR (&quot;do not reply&quot;) OR (&quot;add our e-mail&quot;) OR (&quot;add our email&quot;)) OR (&quot;your receipt number&quot;)'/>
-		<apps:property name='label' value='InHuman'/>
+		<!-- Exclude emails that have been forwarded or replied to. -->
+		<apps:property name='subject' value='-fwd AND -re' />
+		<!-- No-reply and bounced emails. Gmail doesn't support wildcards hence the multiple versions. -->
+		<apps:property name='from' value='
+			reply OR 
+			no-reply OR 
+			noreply OR 
+			do_not_reply OR 
+			postmaster OR 
+			system_noreply OR
+			Despatchnoreply OR
+			MAILER-DAEMON
+		' />
+		<!-- Standard terms seen in newsletters and invoices/bills. -->
+		<apps:property name='hasTheWord' value='
+			&quot;unsubscribe&quot; OR
+			&quot;do not reply&quot; OR 
+			&quot;add our e-mail&quot; OR 
+			&quot;add our email&quot; OR 
+			&quot;your receipt number&quot; OR
+			&quot;email preferences&quot; OR
+			&quot;to your address book&quot; OR
+			&quot;online version&quot; OR 
+			&quot;this email was sent&quot; OR 
+			&quot;this email has been sent&quot; OR
+			&quot;email not displaying correctly&quot; OR
+			&quot;email was intended for&quot;
+			&quot;click here&quot; OR
+			&quot;invoice number&quot; OR 
+			&quot;billing period&quot; OR 
+			&quot;receipt number&quot;
+		'/>
+		<apps:property name='label' value='Zombie'/>
 		<apps:property name='shouldArchive' value='true'/>
 	</entry>
 </feed>
