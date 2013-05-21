@@ -5,10 +5,10 @@ Having your email client notify you about email messages that you don't really c
 
 This filter is currently very gmail specific, and as such only looks at the data that gmail exposes, and filters within the functionality that gmail offers (wildcards for example aren't supported). The filter currently matches on:
 
-* From: reply@, no-reply@, noreply@, do_not_reply@, MAILER-DAEMON@
-* Subject: order without "re", invoice without "re", receipt without "re"
-* Body: unsubscribe, do not reply, add our email, add our e-mail, your receipt number
+* From: no reply and bounced email addresses
+* Subject: no specific, but excludes replied and forwarded emails
+* Body: standard terms seen in newsletters and invoices/bills.
 
 This filter isn't perfect, but so far, catches over 90% of my zombie emails, with very few false positives (although I don't get that many emails).
 
-To create an zombie filter, use the conditions about, or import the XML file attached on the gmail Settings -> Filters screen.
+To create an zombie filter, use the conditions above, or import the XML file attached on the gmail Settings -> Filters screen.
