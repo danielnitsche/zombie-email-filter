@@ -7,39 +7,49 @@
 		<category term='filter'></category>
 		<title>Mail Filter</title>
 		<content></content>
-		<!-- Exclude emails that have been forwarded or replied to. -->
+		<!-- Exclude emails that have been forwarded or replied to -->
 		<apps:property name='subject' value='-fwd AND -re' />
-		<!-- No-reply and bounced emails. Gmail doesn't support wildcards hence the multiple versions. -->
-		<apps:property name='from' value='
-			reply OR 
-			no-reply OR 
-			noreply OR 
-			do_not_reply OR 
-			postmaster OR 
-			system_noreply OR
-			Despatchnoreply OR
-			MAILER-DAEMON
-		' />
-		<!-- Standard terms seen in newsletters and invoices/bills. -->
+		<!-- To make "or" conditions between fields, we need to put all criteria in the "hasTheWord" field. -->
+		<!-- Section 1: no-reply and bounced emails. Gmail doesn't support wildcards hence the multiple versions. -->
+		<!-- Section 2: standard terms seen in newsletters and invoices/bills. -->
+		<!-- Section 3: bills, invoices etc. -->
 		<apps:property name='hasTheWord' value='
-			&quot;unsubscribe&quot; OR
-			&quot;do not reply&quot; OR 
-			&quot;add our e-mail&quot; OR 
-			&quot;add our email&quot; OR 
-			&quot;your receipt number&quot; OR
-			&quot;email preferences&quot; OR
-			&quot;to your address book&quot; OR
-			&quot;online version&quot; OR 
-			&quot;this email was sent&quot; OR 
-			&quot;this email has been sent&quot; OR
-			&quot;email not displaying correctly&quot; OR
-			&quot;email was intended for&quot;
-			&quot;click here&quot; OR
-			&quot;invoice number&quot; OR 
-			&quot;billing period&quot; OR 
-			&quot;receipt number&quot;
+			from: (
+				reply OR 
+				no-reply OR 
+				noreply OR 
+				do_not_reply OR 
+				postmaster OR 
+				system_noreply OR
+				Despatchnoreply OR
+				MAILER-DAEMON
+			) OR (
+				&quot;unsubscribe&quot; OR
+				&quot;do not reply&quot; OR 
+				&quot;add our e-mail&quot; OR 
+				&quot;add our email&quot; OR 
+				&quot;your receipt number&quot; OR
+				&quot;email preferences&quot; OR
+				&quot;to your address book&quot; OR
+				&quot;online version&quot; OR 
+				&quot;this email was sent&quot; OR 
+				&quot;this email has been sent&quot; OR
+				&quot;email not displaying correctly&quot; OR
+				&quot;email was intended for&quot; OR
+				&quot;click here&quot;
+			) OR (
+				has:attachment AND
+				subject: (
+					&quot;payment&quot; OR
+					&quot;invoice&quot; OR 
+					&quot;bill&quot; OR 
+					&quot;receipt&quot;
+				)
+			)
 		'/>
+		<!-- Apply Zombie label. -->
 		<apps:property name='label' value='Zombie'/>
+		<!-- Archive. -->
 		<apps:property name='shouldArchive' value='true'/>
 	</entry>
 </feed>
